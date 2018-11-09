@@ -1,21 +1,15 @@
 // This is the MySportsFeed API
 
-$.ajax
-({
-  type: "GET",
+$.get({
   url: "https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json",
   dataType: 'json',
-  async: false,
   headers: {
     "Authorization": "Basic " + btoa("389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991")
   },
   data: {  team:"miami-dolphins"  },
-  success: function (received){
-    //alert('Thanks for your comment!'); 
-    var info = $.parseJSON(received);
+}).done(function(info) {
     console.log(info);
-    alert('Ctrl+Shift+i and go to the Console to see the data array!'); 
-  }
+    alert('Ctrl+Shift+i and go to the Console to see the data array!');
 });
 
 
