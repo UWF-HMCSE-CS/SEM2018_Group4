@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Sports Cave</title>
+<link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
+<link rel="stylesheet" href="styles.css">
+<script>
+$.ajax
+({
+  type: "GET",
+  url: https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json?player=smith,
+  dataType: 'json',
+  async: false,
+  headers: {
+    "Authorization": "Basic " + btoa(389c9cb2-7e84-4cb4-a0ec-b2fbaa + ":" + Apr231991)
+  },
+  data: '{ "comment" }',
+  success: function (res){
+    $('#result').html(res)
+  }
+});
+</script>
+</head>
+<body class="body">
+<div class="header">
+  <img src="Graphics/Sports-Cave-header.png" height="50px" width="120px"></a>
+  <div class="header-right">
+    <a class="active" href="#NFL">NFL</a>
+    <a href="#NBA">NBA</a>
+    <a href="#MLB">MLB</a>
+	<a href="#FIFAA">FIFAA</a>
+	<a href="#NHL">NHL</a>
+	<a href="#More">&#183;&#183;&#183;</a>
+  </div>
+</div>
+<div class="sub-header">
+	<a href="#NFL"><img src="Graphics/NFL.png"> </a> 
+    <a href="#NFL"> NFL</a>
+	<a>|</a>
+    <a href="#NFL">Home</a>
+    <a href="#NFLScores">Scores</a>
+	<a href="#NFLSchedule">Schedule</a>
+	<a href="#NFLStandings">Standings</a>
+	<a href="#NFLStats">Stats</a>
+	<a href="#NFLTeams">Teams</a>
+	<a href="#NFLMore">More</a>
+</div>
+<div class="sub-header"></div>
+<br>
+<center><img src="Graphics/Sports-Cave.png"></center>
+<p align="center"><b>Under Construction - SEM Group 4</b></p>
+<div class="container">
+<div id="result" style="color:red"></div>
+</div>
+<div class="side-button"><strong>Chat (65)</strong></div>
+<div class="side-button-active"><strong>Jets vs Bills</strong></div>
+</body>
+</html>
