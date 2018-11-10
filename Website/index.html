@@ -3,22 +3,8 @@
 <title>Sports Cave</title>
 <link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="styles.css">
-<script>
-$.ajax
-({
-  type: "GET",
-  url: https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json?player=smith,
-  dataType: 'json',
-  async: false,
-  headers: {
-    "Authorization": "Basic " + btoa(389c9cb2-7e84-4cb4-a0ec-b2fbaa + ":" + Apr231991)
-  },
-  data: '{ "comment" }',
-  success: function (res){
-    $('#result').html(res)
-  }
-});
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="Sample.js"></script>
 </head>
 <body class="body">
 <div class="header">
@@ -51,6 +37,9 @@ $.ajax
 <div class="container">
 <div id="result" style="color:red"></div>
 </div>
+
+<table id="APICall" style="width:50%" align="center"></table>
+
 <div class="side-button"><strong>Chat (65)</strong></div>
 <div class="side-button-active"><strong>Jets vs Bills</strong></div>
 </body>

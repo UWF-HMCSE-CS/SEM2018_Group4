@@ -1,4 +1,9 @@
 
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .body {
     background-color: #2B2C2D;
     margin: 0;
