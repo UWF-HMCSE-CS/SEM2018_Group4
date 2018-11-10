@@ -15,12 +15,14 @@
   overflow: hidden;
   background-color: #2B2C2D;
   padding: 0px 15%;
+  z-index: 9999999;
 }
 
 .sub-header{
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 5px 15%;
+  padding: 5px 15% 2px;
+  z-index: 9999999;
 }
 
 .header a {
@@ -33,6 +35,56 @@
   line-height: 25px;
   border-radius: 4px;
   font-weight: bold;
+}
+
+.side-chat {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: .1%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999999;
+    color: black;
+    width: 200px;
+    height: 0px;
+    padding: 8px 10px 18px 15px;
+    text-align: left;
+    border-top-left-radius: 5px;
+}
+
+.side-chat-active {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999998;
+    color: black;
+    width: 200px;
+    height: -webkit-fill-available;
+    padding: 8px 10px 18px 15px;
+    text-align: left;
+    border-top-left-radius: 0px;
 }
 
 .side-button {
@@ -48,7 +100,7 @@
     transition-timing-function: linear;
     position: fixed;
     bottom: 0%;
-    right: 5%;
+    right: 15%;
     padding: 1%;
     font-size: 11px;
     z-index: 9999999;
@@ -102,7 +154,8 @@
 }
 
 .sub-header img {
-	position: absolute;
+	/*position: absolute;*/
+	vertical-align: top;
 }
 
 .header a.logo {
