@@ -20,7 +20,7 @@
             }, 4000);
         }
     };
-    var socket = io.connect('http://127.0.0.1:3000');
+    var socket = io();
 
     if(socket !== undefined){
         console.log('Connected to socket...');
@@ -55,10 +55,10 @@
         textarea.addEventListener('keydown', (event) =>{
             //13 is return/enter key
             if(event.which == 13 && event.shiftKey == false){
-                console.log('Keydowned'+username);
+                console.log('Keydowned');
                 socket.emit('input', {
                     
-                    username:username,
+                    //username:username,
                     message:textarea.value
                 });
                 event.preventDefault();

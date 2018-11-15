@@ -1,7 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../model/User');
+const express = require('express');
+const router = express.Router();
+const User = require('../model/User');
+const cookieParser = require('cookie-parser');
 var scripts = [{ script: '/javascripts/clientChat.js' }];
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -27,6 +29,7 @@ router.post('/login', function(req, res){
       console.log(doc);
       if(doc != null){
         console.log(doc);
+        res.cookie("user_name", user.username);
         res.render('chat', {title: 'chatRoom', scripts: scripts, user:doc});
         return;
       }
@@ -35,7 +38,6 @@ router.post('/login', function(req, res){
   });
 });
 
-var scripts = [{ script: '/javascripts/clientChat.js' }];
 router.post('/local-reg', function(req, res){
   //Grab the request body
   var body = req.body;
@@ -62,6 +64,7 @@ router.post('/local-reg', function(req, res){
     res.render('index', { title: 'Express' });
     return;
   }
+  res.cookie("user_name", user.username);
   res.render('chat', {title: 'chatRoom', scripts: scripts, user:user});
   console.log(user.username);
   user.save((err, user) =>{
