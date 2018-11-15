@@ -58,7 +58,7 @@
                 console.log('Keydowned');
                 socket.emit('input', {
                     
-                    //username:username,
+                    username:username,
                     message:textarea.value
                 });
                 event.preventDefault();

@@ -11,7 +11,6 @@ const io = require('socket.io')(http);
 const passport = require('passport');
 
 const mongoose = require('mongoose');
-//const Userf = require('../model/User');
 const ChatUser = mongoose.model('ChatUser');
 
 /**
@@ -28,13 +27,11 @@ app.set('port', port);
 const server = http.listen(port, () => {
   console.log('server is running on port', server.address().port);
 });
-//const io = require('socket.io').listen(3000).sockets;
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-//server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -98,7 +95,7 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-mongoose.connect('mongodb://127.0.0.1/sportscavechat', { useNewUrlParser: true}).catch(function (reason) {
+mongoose.connect('mongodb://34.227.109.175/sportscavechat', { useNewUrlParser: true}).catch(function (reason) {
     console.log('Unable to connect to the mongodb instance. Error: ', reason);
 });
 var db = mongoose.connection;
@@ -108,8 +105,6 @@ db.once('open', ()=>{
     console.log('MongoDB connected....');
 
     io.on('connection', (socket) =>{
-        //let chat = client.db('sportscavechat').collection('chats');
-
         sendStatus = (s) =>{
             socket.emit('status',s);
         };
