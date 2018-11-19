@@ -1,14 +1,13 @@
 (()=> {
+    $(document).ready(function(){
+
     var element = (id) =>{
         return document.getElementById(id);
     };
-
-    var status = element('status');
-    var messages = element('messages');
-    var textarea = element('textarea');
-    var username = document.getElementById('username').innerHTML;
-    var clearBtn = element('clearBtn');
-
+    var textarea = element('newMessage');
+    var sendMessageBtn = $('.send-message-btn');
+    const chatBody   = $('#chatTest');
+ 
     var statusDefault = status.textContent;
 
     var setStatus = (s) =>{
@@ -28,52 +27,43 @@
         socket.on('output', (data) =>{
             if(data.length){
                 for(var x = 0;x<data.length;x++){
-                    var message = document.createElement('div');
-                    message.setAttribute('class', 'chat-message');
-                    message.textContent = data[x].username+": "+data[x].message;
-                    messages.appendChild(message);
-                    messages.insertBefore(message, messages.firstChild);
+                    chatBody.append(
+                        `<li class="clearfix message Chat1">
+                            <div class="sender">${data[x].username}</div>
+                            <div class="message">${data[x].message}</div>
+                        </li>`
+                    );
                 }
+                chatBody.scrollTop(chatBody[0].scrollHeight);
             }
             else{
-                var message1 = document.createElement('div');
-                message1.setAttribute('class', 'chat-message');
-                message1.textContent = data.username+": "+data.message;
-                messages.appendChild(message1);
-                messages.insertBefore(message1, messages.firstChild);
-            }
-        });
-
-        socket.on('status', (data) =>{
-            setStatus((typeof data === 'object')? data.message : data);
-
-            if(data.clear){
+                chatBody.append(
+                    `<li class="clearfix message Chat1">
+                        <div class="sender">${data.username}</div>
+                        <div class="message">${data.message}</div>
+                    </li>`
+                );
                 textarea.value = '';
+                chatBody.scrollTop(chatBody[0].scrollHeight);            
             }
         });
-
+        
+        const inputToSocket = () => {socket.emit('input', {
+            username: "Dcarter",
+            message: textarea.value
+        });};
         textarea.addEventListener('keydown', (event) =>{
             //13 is return/enter key
             if(event.which == 13 && event.shiftKey == false){
-                console.log('Keydowned');
-                socket.emit('input', {
-                    
-                    username:username,
-                    message:textarea.value
-                });
+                inputToSocket();
                 event.preventDefault();
             }
-
         });
-        
-        clearBtn.addEventListener('click', () =>{
-            console.log('button clicked');
-            socket.emit('clear');
+        sendMessageBtn.click(()=>{
+            inputToSocket();
         });
-
-        socket.on('cleared', () =>{
-            console.log('clearing');
-            messages.textContent = '';
-        });
+    }else{
+        console.log('Not connected to socket...');
     }
+});
 })();

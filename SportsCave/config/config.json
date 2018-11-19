@@ -1,0 +1,24 @@
+{
+    "development": {
+        "config_id": "development",
+        "app_name": "my app",
+        "app_desc": "my app desc",
+        "node_port": 3000,
+        "database": "mongodb://127.0.0.1/sportscavechat"
+    },
+    "testing": {
+        "config_id": "testing",
+        "node_port": 3000,
+        "database": "mongodb://db-user:password@34.227.109.175/sportscavechat"
+    },
+    "staging": {
+        "config_id": "staging",
+        "node_port": 3000,
+        "database": "mongodb://127.0.0.1/sportscavechat"
+    },
+    "production": {
+        "config_id": "production",
+        "node_port": 3000,
+        "database": "mongodb://127.0.0.1/sportscavechat"
+    }
+}

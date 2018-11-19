@@ -8,16 +8,15 @@ const app = require('../app');
 const debug = require('debug')('sportscave:server');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const passport = require('passport');
-
 const mongoose = require('mongoose');
 const ChatUser = mongoose.model('ChatUser');
-
+process.env.NODE_ENV = 'development';
+const config = require('../config/config.js');
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(global.gConfig.node_port || '3000');
 app.set('port', port);
 
 /**
@@ -95,7 +94,7 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-mongoose.connect('mongodb://34.227.109.175/sportscavechat', { useNewUrlParser: true}).catch(function (reason) {
+mongoose.connect(global.gConfig.database, { useNewUrlParser: true}).catch(function (reason) {
     console.log('Unable to connect to the mongodb instance. Error: ', reason);
 });
 var db = mongoose.connection;
@@ -105,12 +104,10 @@ db.once('open', ()=>{
     console.log('MongoDB connected....');
 
     io.on('connection', (socket) =>{
-        sendStatus = (s) =>{
-            socket.emit('status',s);
-        };
 
         ChatUser.find().limit(50).sort({__id:1}).then((res) =>
         {
+            console.log('Rewsr',res)
             socket.emit('output', res);
         }).catch(function(error){
             console.log('Error getting the posts');
@@ -133,24 +130,9 @@ db.once('open', ()=>{
                     console.log('chat save'+chatUser.name);
                     io.emit('output', {username:chatUser.name, message: chatUser.message});
 
-                    sendStatus({
-                        message: 'Message sent',
-                        clear: true
-                    });
                 });
             }
 
-        });
-
-        socket.on('clear', (data) =>{
-
-            ChatUser.deleteMany({}, (err) =>{
-                if(err){
-                    throw err;
-                }
-    
-                socket.emit('cleared');
-            });
         });
     });
 });

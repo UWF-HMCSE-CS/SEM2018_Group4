@@ -1,0 +1,207 @@
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.body {
+    background-color: #2B2C2D;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+	color:white;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #2B2C2D;
+  padding: 0px 15%;
+  z-index: 9999999;
+}
+
+.sub-header{
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 5px 15% 2px;
+  z-index: 9999999;
+}
+
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.side-chat {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: .1%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999999;
+    color: black;
+    width: 200px;
+    height: 0px;
+    padding: 8px 10px 18px 15px;
+    text-align: left;
+    border-top-left-radius: 5px;
+}
+
+.side-chat-active {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999998;
+    color: black;
+    width: 200px;
+    height: -webkit-fill-available;
+    padding: 8px 10px 18px 15px;
+    text-align: left;
+    border-top-left-radius: 0px;
+}
+
+.side-button {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: 15%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999999;
+    color: black;
+    width: 100px;
+    height: 0px;
+    padding: 8px 200px 318px 15px;
+    text-align: left;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.side-button-active {
+    background: #F5F6F7;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    transition-property: background;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    position: fixed;
+    bottom: 0%;
+    right: 15%;
+    padding: 1%;
+    font-size: 11px;
+    z-index: 9999999;
+    color: black;
+    width: 100px;
+    height: 0px;
+    padding: 8px 200px 318px 15px;
+    text-align: left;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
+}
+.messages-clearfix {
+  height:200px;
+  width: 100%;
+  
+  overflow-y: scroll;
+}
+.sub-header a {
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 12px; 
+  border-radius: 4px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.header img {
+	
+}
+
+.sub-header img {
+	/*position: absolute;*/
+	vertical-align: top;
+}
+
+.header a.logo {
+  font-size: 5px;
+  font-weight: bold;
+}
+
+.header a.active {
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (min-width: 1024px)
+{
+.header a.active:before {
+    border-color: transparent transparent #fff transparent;
+    border-style: solid;
+    border-width: 0 8px 8px 8px;
+    bottom: -8px;
+    content: '';
+    height: 0;
+    left: 50%;
+    margin-left: -8px;
+    position: relative;
+    width: 0;
+    z-index: 1000041;
+}
+}
+
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
