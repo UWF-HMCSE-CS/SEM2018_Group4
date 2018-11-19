@@ -19,7 +19,7 @@
             }, 4000);
         }
     };
-    var socket = io();
+    var socket = io.connect('http://34.227.109.175:3000');
 
     if(socket !== undefined){
         console.log('Connected to socket...');
