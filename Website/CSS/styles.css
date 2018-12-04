@@ -87,6 +87,19 @@
     border-top-left-radius: 0px;
 }
 
+#login {
+    width: 320px;
+    margin: 15% 0 0;
+    margin: auto;
+	padding: 2%;
+    background: #f1f1f1;
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 .side-button {
     background: #F5F6F7;
     -moz-transition-property: background;
