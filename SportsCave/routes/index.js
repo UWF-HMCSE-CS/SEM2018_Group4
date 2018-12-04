@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
+const chatUser = require('../model/ChatUser');
 const cookieParser = require('cookie-parser');
 var scripts = [{ script: '/javascripts/clientChat.js' }];
 

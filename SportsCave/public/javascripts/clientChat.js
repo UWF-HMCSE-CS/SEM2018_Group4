@@ -6,7 +6,7 @@
     };
     var textarea = element('newMessage');
     var sendMessageBtn = $('.send-message-btn');
-    const chatBody   = $('#chatTest');
+    const chatBody   = $('#chatTitle');
  
     var statusDefault = status.textContent;
 
@@ -19,7 +19,7 @@
             }, 4000);
         }
     };
-    var socket = io.connect('http://34.227.109.175:3000');
+    var socket = io();
 
     if(socket !== undefined){
         console.log('Connected to socket...');

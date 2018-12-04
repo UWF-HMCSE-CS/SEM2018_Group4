@@ -66,20 +66,19 @@
 <div class="sub-header"></div>
 <br>
 {{{body}}}
-<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong>   
-</div>
+<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>
 <div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong>
-  <ul class="messages-clearfix" id='chatTest'>    
-    </ul>
-    <div class="input">
-      <form class="form-inline" id="messageSupport">
-        <div class="form-group">
-          <input type="text" autocomplete="off" class="form-control" id="newMessage" placeholder="Enter Message">
-        </div>
-        <button type="submit" class="btn btn-primary send-message-btn">Send</button>
-      </form>
-    </div>
+  <div class="chat-titlebar"><strong>Jets vs Bills</strong></div>
+  <ul class="messages-clearfix" id='chatTitle'></ul>
+  <div class="chat-input">
+    <form class="form-inline" id="messageSupport">
+      <div class="form-group">
+        <input type="text" autocomplete="off" class="form-control" id="newMessage" placeholder="Enter Message">
+      </div>
+      <button type="submit" class="btn btn-primary send-message-btn">Send</button>
+    </form>
   </div>
+</div>
 </body>
 <script src="/javascripts/APICalls.js"></script>
 <script src="/javascripts/Chat.js"></script>
