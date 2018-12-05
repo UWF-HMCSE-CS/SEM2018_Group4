@@ -4,8 +4,8 @@
 <link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/APICalls.js"></script>
 <script src="../JS/Chat.js"></script>
+<script src="../JS/Validate.js"></script>
 </head>
 <body class="body">
 <div class="header">
@@ -33,17 +33,17 @@
 	<legend align="center">OR</legend>
 </fieldset>
 
-<form name="loginform" id="loginform" method="post">
+<form name="loginform" id="loginform" onsubmit="return validateFields()" method="post">
 <p>
 <label for="user_login">Username or Email Address<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+<input type="text" name="log" class="input" size="20" /></label>
 </p>
 <p>
 <label for="user_pass">Password<br />
-<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
+<input type="password" name="pwd" class="input" size="20" /></label>
 </p>
 <p class="submit">
-<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
+<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Login" />
 </p>
 </form>
 <p id="backtoblog"><a href="../index.html">Back to Sports Cave</a> | <a href="signup.html">Create a New Account</a></p>

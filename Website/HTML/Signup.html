@@ -4,8 +4,8 @@
 <link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/APICalls.js"></script>
 <script src="../JS/Chat.js"></script>
+<script src="../JS/Validate.js"></script>
 </head>
 <body class="body">
 <div class="header">
@@ -33,16 +33,16 @@
 	<legend align="center">OR</legend>
 </fieldset>
 
-<form name="signupform" id="loginform" method="post">
+<form name="signupform" id="loginform" onsubmit="return validateFields()" method="post">
 <p>
 <label for="user_login">First Name<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+<input type="text" name="fname" class="input" size="20" /></label>
 <label for="user_login">Last Name<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+<input type="text" name="lname" class="input" size="20" /></label>
 <label for="user_login">Mobile Number or Email<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+<input type="text" name="emailmobile" class="input" size="20" /></label>
 <label for="user_pass">Password<br />
-<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
+<input type="password" name="pwd" class="input" size="20" /></label>
 <label for="user_pass">Birthday<br />
 <select aria-label="Month" name="birthday_month" id="month" title="Month">
 <option value="0">Month</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12" selected="1">Dec</option>
