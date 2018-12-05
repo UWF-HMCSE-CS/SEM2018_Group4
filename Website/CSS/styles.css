@@ -119,6 +119,47 @@
 	color: blue;
 }
 
+.hr-line {
+	border-top: 1px solid #ccc !important;
+	border: 0px;
+
+}
+
+.sm-button {
+	
+	width: 100%;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	color: white;
+    border-color: #263961;
+    background: #3b5998;
+    padding: 6px 18px 4px 5px;
+    border: 1px solid;
+	font-weight: bold;
+	border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+	cursor: pointer;
+}
+
+.sm-button:hover {
+	background: #3b5985;	
+}
+
+#google {
+	background: #fff!important;
+	color: #666!important;
+}
+
+#google:hover {
+	background: #f7f7f7!important;
+}
+
+.SM-image-size {
+	height: 15px;
+}
+
+
 .input {
 	font-size: 24px;
     width: 100%;
@@ -140,6 +181,10 @@
     padding: 0 12px 2px;
     background: #2B2C2D;
     color: #fff;
+}
+
+.button:hover {
+	background: #000000;
 }
 
 #backtoblog {
