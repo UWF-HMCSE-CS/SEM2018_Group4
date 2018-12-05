@@ -2,7 +2,7 @@
 
 function ChangeClassSideButton(element)
 {
-	$(element).toggleClass('side-button-active');
+	$(".side-button").toggleClass('side-button-active');
 }
 function ChangeClassSideChat(element)
 {

@@ -7,10 +7,8 @@ module.exports = {
         ChatUser.find().limit(50).sort({__id:1}).then((res) =>
         {
             console.log('Rewsr',res);
-            userChats = res;  });          
-        // }).catch(function(error){
-        //     console.log('Error getting the posts');
-        // });
+            userChats = res;  
+        });
         return userChats;
     },
 
@@ -23,8 +21,6 @@ module.exports = {
             }
             console.log('chat save'+chatUser.name);
             return {username:chatUser.name, message: chatUser.message};
-            //io.emit('output', {username:chatUser.name, message: chatUser.message});
-
         });
     }
     

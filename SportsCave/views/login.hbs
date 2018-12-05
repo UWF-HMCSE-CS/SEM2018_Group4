@@ -1,19 +1,25 @@
 <div id="login">
-<div align="center"><img src="../images/Sports-Cave.png" style="height:100px;width:100px;" alt="25"></div>
+<div align="center"><img src="../images/Sports-Cave.png" style="height:100px;width:100px;"></div>
 <h1 align="center">Login</h1>
-<form name="loginform" id="loginform" action="/performLogin" method="post">
+<p align="center"><button type="submit" class="sm-button" id="Google" value="Login with Google" /><img src="../images/Google.png" class="SM-image-size">Login with Google</button></p>
+<p align="center"><button type="submit" class="sm-button" value="Login with Facebook" /><img src="../images/FB.png" class="SM-image-size">Login with Facebook</button></p>
+<fieldset class="hr-line">
+	<legend align="center">OR</legend>
+</fieldset>
+
+<form name="loginform" id="loginform" onsubmit="return validateFields()" action="/performLogin" method="post">
 <p>
-<label for="user_login">Username or Email Address<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+<label for="user_login">Username<br />
+<input type="text" name="log" class="input" size="20" /></label>
 </p>
 <p>
 <label for="user_pass">Password<br />
-<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
+<input type="password" name="pwd" class="input" size="20" /></label>
 </p>
 <div>{{ErrorMessage}}</div>
 <p class="submit">
-<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
+<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Login" />
 </p>
 </form>
- <p id="backtoblog"><a href="../index.html">Back to Sports Cave</a> | <a href="./signup.hbs">Create a New Account</a></p> 
- </div>
+<p id="backtoblog"><a href="/">Back to Sports Cave</a> | <a href="/signup">Create a New Account</a></p>
+</div>

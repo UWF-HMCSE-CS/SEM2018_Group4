@@ -5,21 +5,27 @@ const chatUser = require('../model/ChatUser');
 const cookieParser = require('cookie-parser');
 var scripts = [{ script: '/javascripts/clientChat.js' }];
 
-/* GET home page. */
-router.get('/', function(req, res, next) {  
-  if(!req.session || req.session.userId == undefined){
+function loggedIn(req) {
+  return !req.session || req.session.userId == undefined;
+}
+
+function determineLogin(req, res) {
+  if (loggedIn(req)) {
     res.redirect('/login');
+  }else{
+    console.log('Here '+req.session.userId);
+    res.render('index', {userName: req.session.userName});
   }
-  console.log('Here '+req.session.userId);
-  res.render('index', {userName: req.session.userName});
+}
+/* GET home page. */
+router.get(/^\/(index)?$/, function(req, res, next) {  
+  determineLogin(req, res);
 });
+
 
 router.get('/signup', function(req, res, next) {
   console.log('id '+req.session.userId);
-  if(req.session.userId === undefined){
-    res.redirect('/login');
-  }
-  res.render('/signup');
+  res.render('signup');
 });
 
 router.get('/login', function(req, res, next) {
@@ -36,7 +42,7 @@ router.post('/performLogin', function(req, res){
   User.findOne({ 'username': user.username, 'password': user.password }, (err, doc) =>{
       if(err){
         console.log('ERRROR: '+ err);
-        throw err;
+        res.render('login', {ErrorMessage:'Error finding user', userName: undefined});
       }
       console.log(doc);
       if(doc != null){
@@ -46,50 +52,55 @@ router.post('/performLogin', function(req, res){
         console.log(req.session.userId);
         res.cookie("user_name", user.username);
         res.redirect('/');
-        return;
+      }else{
+        console.log('invalid arguments');
+        res.render('login', {ErrorMessage:'Error user not found', userName: undefined});
       }
-      console.log('invalid arguments');
-      res.render('login', {ErrorMessage:'Error user not found', userName: undefined});
-      return;
-      //res.render('/signup');
   });
 });
 
-router.post('/register', function(req, res){
+router.post('/signup', function(req, res){
   //Grab the request body
   var body = req.body;
-  console.log(body);
+  console.log('bod ',body);
   let user = new User({
-    username: body.username,
+    username: body.log,
     email: body.emailaddress, 
-    firstName: body.firstName,
-    lastName: body.lastName,
+    firstName: body.fname,
+    lastName: body.lname,
     birthday: body.birthDay,
-    password: body.password,
-    avatar: body.avatar
+    password: body.pwd,
   });
   let users = 0;
   User.count({ 'username': user.username, 'email': user.email }, (err, count) =>{
       if(err){
-        throw err;
-      }
-      
+        res.render('login', {ErrorMessage:'Error fields were not validated', userName: undefined});
+      }      
       users = count;
   });
 
   if(users > 0){
-    res.render('index', { title: 'Express' });
+    res.render('login', {ErrorMessage:'Error user already exist', userName: undefined});
     return;
+  }else{
+    res.cookie("user_name", user.username);
+    console.log(user.username);
+    user.save((err, newUser) =>{
+        if(err){
+          res.render('login', {ErrorMessage:'Error fields were not validated', userName: undefined});
+        }
+        console.log('us ',user);
+        req.session.userId = user._id;
+        req.session.userName = user.username;
+        console.log(req.session.userId);
+        res.cookie("user_name", user.username);
+        res.redirect('/');
+    });
   }
-  res.cookie("user_name", user.username);
-  res.render('chat', {title: 'chatRoom', scripts: scripts, user:user});
-  console.log(user.username);
-  user.save((err, user) =>{
-      if(err){
-          throw err;
-      }
-    
-    res.render('chat', {title: 'chatRoom', scripts: scripts, user:user});
-  });
+
 }); 
 module.exports = router;
+
+
+
+

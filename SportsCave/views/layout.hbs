@@ -1,31 +1,3 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>SportsCave Chat</title>
-    <style>
-        #messages{height:300px;}
-    </style>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-  <body>
-    {{{body}}}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
-
-    {{#each scripts}}
-         <script src="{{script}}"></script>
-    {{/each}}
-  </body>
-</html>
- --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,72 +12,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 </head>
 <body class="body">
+<div class="full-header">
 <div class="header">
-  <img src="/images/Sports-Cave-header.png" height="50px" width="120px"></a>
-  <div class="header-right">
-    <a class="active" href="#NFL">NFL</a>
+  <div class="header-right" style="float:left">
+	<a href="index.html" style="padding:0px!important;"><img src="../images/Sports-Cave-header.png" height="50px" width="120px" style="float:left"></a>
+    <a href="#NFL">NFL</a>
     <a href="#NBA">NBA</a>
     <a href="#MLB">MLB</a>
 	<a href="#FIFAA">FIFAA</a>
 	<a href="#NHL">NHL</a>
 	<a href="#More">&#183;&#183;&#183;</a>
   </div>
+   <div class="header-right">
+    </div>
+    {{#if userName}}
+      <a id="userName">{{userName}}</a>
+    {{else}}
+      <span id="userName"></span>
+    <a href="/login">Login</a>
+    <a href="/signup">Sign Up</a>
+    {{/if}}
+    
+  </div>
 </div>
-<div class="sub-header">
-	<a href="#NFL"><img src="/images/NFL.png"> </a> 
-    <a href="#NFL"> NFL</a>
-	<a>|</a>
-    <a href="#NFL">Home</a>
-    <a href="#NFLScores">Scores</a>
-	<a href="#NFLSchedule">Schedule</a>
-	<a href="#NFLStandings">Standings</a>
-	<a href="#NFLStats">Stats</a>
-	<a href="#NFLTeams">Teams</a>
-	<a href="#NFLMore">More</a>
-</div>
-{{#if userName}}
-<div>Hello <span id="userName">{{userName}}</span></div>
-{{else}}
-<div><span id="userName"></span></div>
-{{/if}}
-<div class="sub-header"></div>
-<br>
-{{!-- <div id="login">
-<div align="center"><img src="../images/Sports-Cave.png" style="height:100px;width:100px;" alt="25"></div>
-<h1 align="center">Login</h1>
-<form name="loginform" id="loginform" method="post">
-<p>
-<label for="user_login">Username or Email Address<br />
-<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
-</p>
-<p>
-<label for="user_pass">Password<br />
-<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
-</p>
-<p class="submit">
-<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
-</p>
-</form>
- <p id="backtoblog"><a href="../index.html">Back to Sports Cave</a> | <a href="signup.html">Create a New Account</a></p> 
- </div> --}}
 {{{body}}}
 <div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>
 {{#if userName}}
-<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong>
-  <div class="chat-titlebar"><strong>Jets vs Bills</strong></div>
-  <ul class="messages-clearfix" id='chatTitle'></ul>
-  <div class="chat-input">
-    <form class="form-inline" id="messageSupport">
-      <div class="form-group">
-        <input type="text" autocomplete="off" class="form-control" id="newMessage" placeholder="Enter Message">
-      </div>
-      <button type="submit" class="btn btn-primary send-message-btn">Send</button>
-    </form>
+<div class="side-button" >
+  <div class="chat-titlebar" onclick="ChangeClassSideButton()" ><h2>Jets vs Bills</h2></div>
+  <div class="chat-content">
+    <ul class="messages-clearfix" id='chatTitle'></ul>
+    <div class="chat-input">
+      <form class="form-inline" id="messageSupport">
+        <div class="form-group">
+          <input type="text" autocomplete="off" class="form-control" id="newMessage" placeholder="Enter Message">
+        <button type="submit" class="btn btn-primary send-message-btn">Send</button>
+        </div>        
+      </form>
+    </div>
   </div>
 </div>
 <script src="/javascripts/clientChat.js"></script>
 {{/if}}
+
 </body>
 <script src="/javascripts/APICalls.js"></script>
 <script src="/javascripts/Chat.js"></script>
+<script src="/javascripts/Validate.js"></script>
 </html>
