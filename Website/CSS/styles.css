@@ -98,6 +98,37 @@
     border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+	color:black;
+}
+
+#login a {
+	color: black;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: -apple-system,BlinkMacSystemFont,
+				 "Segoe UI",
+				 Roboto,
+				 Oxygen-Sans,
+				 Ubuntu,
+				 Cantarell,
+				 "Helvetica Neue",
+				 sans-serif;
+}
+
+#login a:hover {
+	color: blue;
+}
+
+.input {
+	font-size: 24px;
+    width: 100%;
+    padding: 3px;
+    margin: 2px 6px 16px 0;
+}
+
+#backtoblog {
+	text-decoration: none;
+    color: #555d66;
 }
 
 .side-button {
