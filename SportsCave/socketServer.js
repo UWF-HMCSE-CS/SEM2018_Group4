@@ -1,5 +1,6 @@
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+require('./model/ChatUser');
 const ChatUser = mongoose.model('ChatUser');
 const request = require('request');
 
@@ -8,29 +9,19 @@ var io = socket();
 var socketApi = {};
 socketApi.io = io;
 
+var users = [];
 io.on('connection', (socket) =>{
-    ChatUser.find().limit(50).sort({__id:1}).then((res) =>
-    {
-        socket.emit('output', res);
-    }).catch(function(error){
-        console.log('Error getting the posts');
-    });
+    //getPreviousChatHistory(socket);
     
     let encryptKey = Buffer.from(global.gConfig.sports_feed_key).toString('base64');
-    request({
-        method: 'GET',
-        uri: global.gConfig.sports_feed_url,
-        json: true,
-        headers: {
-          "Authorization": "Basic " + encryptKey
-        },
-        data: {  team:"miami-dolphins"  }
-    },function (error, response, body) {
-        let players = body.cumulativeplayerstats.playerstatsentry;
-        console.log('players ', players);
-        socket.emit('addSportsFeed', players);
-      }
-    );
+    socket.on('clientConnected', (username)=>{
+        if(!users.includes(username.username)){
+            users.push(username.username);
+            getSportsChatFeed(encryptKey, socket);
+            getPreviousChatHistory(socket);            
+        }
+
+    });
        
     socket.on('input', (data) =>{
         let name = data.username;
@@ -54,3 +45,27 @@ io.on('connection', (socket) =>{
 });
 
 module.exports = socketApi;
+
+function getPreviousChatHistory(socket) {
+    ChatUser.find().limit(50).sort({ __id: 1 }).then((res) => {
+        socket.emit('output', res);
+    }).catch(function (error) {
+        console.log('Error getting the posts');
+    });
+}
+
+function getSportsChatFeed(encryptKey, socket) {
+    request({
+        method: 'GET',
+        uri: global.gConfig.sports_feed_url,
+        json: true,
+        headers: {
+            "Authorization": "Basic " + encryptKey
+        },
+        data: { team: "miami-dolphins" }
+    }, function (error, response, body) {
+        let players = body.cumulativeplayerstats.playerstatsentry;
+        console.log('players ', players);
+        socket.emit('addSportsFeed', players);
+    });
+}

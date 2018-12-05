@@ -14,9 +14,9 @@
     console.log('Name '+userName.textContent);
     var statusDefault = status.textContent;
 
-    chatTitle.click(()=>{
-        $('#side-button').toggleClass('hide-chat');
-    });
+    // chatTitle.click(()=>{
+    //     $('#side-button').toggleClass('hide-chat');
+    // });
     var setStatus = (s) =>{
         status.textContent = s;
 
@@ -80,8 +80,15 @@
             chatBody.scrollTop(chatBody[0].scrollHeight);            
         }
     };
+    let dataSent = false;
     if(socket !== undefined){
         console.log('Connected to socket...');
+    
+            socket.emit('clientConnected', {username: userName.text()});
+            dataSent = true;
+                  
+        
+
         socket.on('output', (data) =>{
             handleOutput(userName, data, outPutToChat);
         });
@@ -94,8 +101,6 @@
         };
 
         sendMessageBtn.click(()=>{
-            userName = $('#userName');
-            console.log(`UserName change...username: ${userName.text()}, u.val${userName.text()}, u.value${userName.value}, u.tc ${userName.textContent}, u.te ${userName.text}`);
             inputToSocket();
         });
 
