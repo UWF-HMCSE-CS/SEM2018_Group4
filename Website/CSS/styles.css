@@ -126,6 +126,22 @@
     margin: 2px 6px 16px 0;
 }
 
+.button {
+    text-shadow: 0 -1px 1px #2B2C2D, 1px 0 1px #2B2C2D, 0 1px 1px #2B2C2D, -1px 0 1px #2B2C2D;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: #0d1740 #2B2C2D #2B2C2D;
+    box-shadow: 0 1px 0 #0d1740;
+    align-items: flex-start;
+    cursor: pointer;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px 2px;
+    background: #2B2C2D;
+    color: #fff;
+}
+
 #backtoblog {
 	text-decoration: none;
     color: #555d66;
