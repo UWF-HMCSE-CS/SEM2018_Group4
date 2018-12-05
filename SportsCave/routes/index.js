@@ -6,21 +6,32 @@ const cookieParser = require('cookie-parser');
 var scripts = [{ script: '/javascripts/clientChat.js' }];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res, next) {  
+  if(!req.session || req.session.userId == undefined){
+    res.redirect('/login');
+  }
+  console.log('Here '+req.session.userId);
+  res.render('index', {userName: req.session.userName});
 });
 
-//displays our signup page
-router.get('/signin', function(req, res){
-  res.render('signin');
+router.get('/signup', function(req, res, next) {
+  console.log('id '+req.session.userId);
+  if(req.session.userId === undefined){
+    res.redirect('/login');
+  }
+  res.render('/signup');
 });
 
-router.post('/login', function(req, res){
+router.get('/login', function(req, res, next) {
+  
+  res.render('login');
+});
+router.post('/performLogin', function(req, res){
   var body = req.body;
   console.log(body);
   let user = new User({
-    username: body.username,
-    password: body.password,
+    username: body.log,
+    password: body.pwd,
   });
   User.findOne({ 'username': user.username, 'password': user.password }, (err, doc) =>{
       if(err){
@@ -30,16 +41,21 @@ router.post('/login', function(req, res){
       console.log(doc);
       if(doc != null){
         console.log(doc);
+        req.session.userId = doc._id;
+        req.session.userName = doc.username;
+        console.log(req.session.userId);
         res.cookie("user_name", user.username);
-        res.render('chat', {title: 'chatRoom', scripts: scripts, user:doc});
+        res.redirect('/');
         return;
       }
       console.log('invalid arguments');
-      res.render('signin');
+      res.render('login', {ErrorMessage:'Error user not found', userName: undefined});
+      return;
+      //res.render('/signup');
   });
 });
 
-router.post('/local-reg', function(req, res){
+router.post('/register', function(req, res){
   //Grab the request body
   var body = req.body;
   console.log(body);

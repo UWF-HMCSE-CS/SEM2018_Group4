@@ -63,10 +63,34 @@
 	<a href="#NFLTeams">Teams</a>
 	<a href="#NFLMore">More</a>
 </div>
+{{#if userName}}
+<div>Hello <span id="userName">{{userName}}</span></div>
+{{else}}
+<div><span id="userName"></span></div>
+{{/if}}
 <div class="sub-header"></div>
 <br>
+{{!-- <div id="login">
+<div align="center"><img src="../images/Sports-Cave.png" style="height:100px;width:100px;" alt="25"></div>
+<h1 align="center">Login</h1>
+<form name="loginform" id="loginform" method="post">
+<p>
+<label for="user_login">Username or Email Address<br />
+<input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+</p>
+<p>
+<label for="user_pass">Password<br />
+<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /></label>
+</p>
+<p class="submit">
+<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
+</p>
+</form>
+ <p id="backtoblog"><a href="../index.html">Back to Sports Cave</a> | <a href="signup.html">Create a New Account</a></p> 
+ </div> --}}
 {{{body}}}
 <div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>
+{{#if userName}}
 <div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong>
   <div class="chat-titlebar"><strong>Jets vs Bills</strong></div>
   <ul class="messages-clearfix" id='chatTitle'></ul>
@@ -79,8 +103,9 @@
     </form>
   </div>
 </div>
+<script src="/javascripts/clientChat.js"></script>
+{{/if}}
 </body>
 <script src="/javascripts/APICalls.js"></script>
 <script src="/javascripts/Chat.js"></script>
-<script src="/javascripts/clientChat.js"></script>
 </html>

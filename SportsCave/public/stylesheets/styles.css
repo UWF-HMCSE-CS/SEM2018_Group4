@@ -24,7 +24,46 @@
   padding: 5px 15% 2px;
   z-index: 9999999;
 }
+#login {
+  color: #2B2C2D;
+  width: 320px;
+  margin: 15% 0 0;
+  margin: auto;
+padding: 2%;
+  background: #f1f1f1;
+  box-shadow: 0 1px 3px rgba(0,0,0,.13);
+border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 
+#login a {
+	color: black;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: -apple-system,BlinkMacSystemFont,
+				 "Segoe UI",
+				 Roboto,
+				 Oxygen-Sans,
+				 Ubuntu,
+				 Cantarell,
+				 "Helvetica Neue",
+				 sans-serif;
+}
+#login a:hover {
+	color: blue;
+}
+.input {
+	font-size: 24px;
+    width: 100%;
+    padding: 3px;
+    margin: 2px 6px 16px 0;
+}
+#backtoblog {
+	text-decoration: none;
+    color: #555d66;
+}
 .header a {
   float: left;
   color: white;
@@ -100,17 +139,23 @@
     transition-timing-function: linear;
     position: fixed;
     bottom: 0%;
-    right: 15%;
     padding: 1%;
     font-size: 11px;
     z-index: 9999999;
     color: black;
-    width: 100px;
-    height: 0px;
     padding: 8px 200px 318px 15px;
     text-align: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+
+    
+    border-right-width: 200px;
+    padding-right: 10px;
+    margin-right: 0px;
+    width: 300px;
+    height: 10px;
+    right: 200px;
+
 }
 
 .side-button-active {
@@ -126,22 +171,27 @@
     transition-timing-function: linear;
     position: fixed;
     bottom: 0%;
-    right: 15%;
+    /* right: 15%; */
     padding: 1%;
     font-size: 11px;
     z-index: 9999999;
     color: black;
-    width: 100px;
-    height: 0px;
     padding: 8px 200px 318px 15px;
     text-align: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+
+    
+    border-right-width: 200px;
+    padding-right: 10px;
+    margin-right: 0px;
+    width: 300px;
+    height: 10px;
+    right: 200px;
+
     
 }
 .messages-clearfix {
-  /* height:200px;
-  width: 100%; */
   height: 230px;
   width:100%;
     padding:0px;
@@ -156,7 +206,10 @@
   border-radius: 4px;
   vertical-align: -webkit-baseline-middle;
 }
-
+.sender {
+  text-align: right;
+  padding: 10px;
+}
 .header img {
 	
 }

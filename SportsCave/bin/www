@@ -7,11 +7,11 @@
 const app = require('../app');
 const debug = require('debug')('sportscave:server');
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+//const io = require('socket.io')(http);
 const mongoose = require('mongoose');
-const ChatUser = mongoose.model('ChatUser');
 process.env.NODE_ENV = 'development';
 const config = require('../config/config.js');
+const socketApi = require('../socketServer.js');
 /**
  * Get port from environment and store in Express.
  */
@@ -33,7 +33,8 @@ const server = http.listen(port, () => {
 
 server.on('error', onError);
 server.on('listening', onListening);
-
+const io = socketApi.io;
+io.attach(server);
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -102,37 +103,37 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', ()=>{
     
     console.log('MongoDB connected....');
+    io.attach(server);
+    // io.on('connection', (socket) =>{
 
-    io.on('connection', (socket) =>{
-
-        ChatUser.find().limit(50).sort({__id:1}).then((res) =>
-        {
-            console.log('Rewsr',res)
-            socket.emit('output', res);
-        }).catch(function(error){
-            console.log('Error getting the posts');
-        });
+    //     ChatUser.find().limit(50).sort({__id:1}).then((res) =>
+    //     {
+    //         console.log('Rewsr',res)
+    //         socket.emit('output', res);
+    //     }).catch(function(error){
+    //         console.log('Error getting the posts');
+    //     });
 
 
-        socket.on('input', (data) =>{
-            let name = data.username;
-            let message = data.message;
-            console.log('recieved data'+data);
-            if(name == '' || message == ''){
-                sendStatus('Please enter a name and message');
-            } else{
-                let chatUser = new ChatUser({name: name, message: message});
-                console.log('chat user'+chatUser.name, chatUser.message);
-                chatUser.save((err, chatUser) =>{
-                    if(err){
-                        throw err;
-                    }
-                    console.log('chat save'+chatUser.name);
-                    io.emit('output', {username:chatUser.name, message: chatUser.message});
+    //     socket.on('input', (data) =>{
+    //         let name = data.username;
+    //         let message = data.message;
+    //         console.log('recieved data'+data);
+    //         if(name == '' || message == ''){
+    //             sendStatus('Please enter a name and message');
+    //         } else{
+    //             let chatUser = new ChatUser({name: name, message: message});
+    //             console.log('chat user'+chatUser.name, chatUser.message);
+    //             chatUser.save((err, chatUser) =>{
+    //                 if(err){
+    //                     throw err;
+    //                 }
+    //                 console.log('chat save'+chatUser.name);
+    //                 io.emit('output', {username:chatUser.name, message: chatUser.message});
 
-                });
-            }
+    //             });
+    //         }
 
-        });
-    });
+    //     });
+    // });
 });
