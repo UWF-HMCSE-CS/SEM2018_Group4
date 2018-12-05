@@ -24,7 +24,7 @@
 <div class="sub-header"></div>
 <br>
 
-<div id="login">
+<div id="login" style="width: 700;">
 <div align="center"><img src="../Graphics/Sports-Cave.png" style="height: 15%;"></div>
 <h1 align="center">Sign Up</h1>
 <p align="center"><button type="submit" class="sm-button" id="Google" value="Sign Up with Google" /><img src="../Graphics/Google.png" class="SM-image-size">Sign Up with Google</button></p>
@@ -35,10 +35,12 @@
 
 <form name="signupform" id="loginform" onsubmit="return validateFields()" method="post">
 <p>
-<label for="user_login">First Name<br />
-<input type="text" name="fname" class="input" size="20" /></label>
-<label for="user_login">Last Name<br />
-<input type="text" name="lname" class="input" size="20" /></label>
+<table style="width:100%; color:black;">
+<tr>
+<td><label for="user_login">First Name<br /><input type="text" name="fname" class="input" size="20" /></label> </td>
+<td><label for="user_login">Last Name<br /><input type="text" name="lname" class="input" size="20" /></label> </td>
+</tr>
+</table>
 <label for="user_login">Username<br />
 <input type="text" name="user" class="input" size="20" /></label>
 <label for="user_login">Mobile Number<br />
@@ -59,13 +61,5 @@
 </form>
 <p id="backtoblog"><a href="../index.html">Back to Sports Cave</a> | <a href="login.html">Already have an Account?</a></p>
 </div>
-
-
-
-
-
-
-<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>
-<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>
 </body>
 </html>
