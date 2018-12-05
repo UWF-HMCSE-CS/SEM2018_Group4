@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../model/User');
 const chatUser = require('../model/ChatUser');
 const cookieParser = require('cookie-parser');
-var scripts = [{ script: '/javascripts/clientChat.js' }];
+var scripts = [{ script: '/javascripts/socketClient.js' }];
 
 function loggedIn(req) {
   return !req.session || req.session.userId == undefined;

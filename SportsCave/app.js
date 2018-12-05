@@ -1,12 +1,10 @@
 var createError = require('http-errors');
-//var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var indexRouter = require('./routes/index');
-//var app = express();
 const config = require('./config/config.js');
 const socketApi = require('./socketServer.js');
 const mongoose = require('mongoose');
@@ -24,7 +22,6 @@ module.exports = (app, server, express)=>{
   }));
 
   app.use(logger('dev'));
-  //app.use(app.json());
   app.use(bodyParser.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());

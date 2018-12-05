@@ -4,21 +4,29 @@
         "app_name": "my app",
         "app_desc": "my app desc",
         "node_port": 3000,
-        "database": "mongodb://127.0.0.1/sportscavechat"
+        "database": "mongodb://127.0.0.1/sportscavechat",
+        "sports_feed_key":"389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991",
+        "sports_feed_url":"https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json"
     },
     "testing": {
         "config_id": "testing",
         "node_port": 3000,
-        "database": "mongodb://db-user:password@34.227.109.175/sportscavechat"
+        "database": "mongodb://db-user:password@34.227.109.175/sportscavechat",
+        "sports_feed_key":"389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991",
+        "sports_feed_url":"https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json"
     },
     "staging": {
         "config_id": "staging",
         "node_port": 3000,
-        "database": "mongodb://127.0.0.1/sportscavechat"
+        "database": "mongodb://127.0.0.1/sportscavechat",
+        "sports_feed_key":"389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991",
+        "sports_feed_url":"https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json"
     },
     "production": {
         "config_id": "production",
         "node_port": 3000,
-        "database": "mongodb://127.0.0.1/sportscavechat"
+        "database": "mongodb://127.0.0.1/sportscavechat",
+        "sports_feed_key":"389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991",
+        "sports_feed_url":"https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json"
     }
 }

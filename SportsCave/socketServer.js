@@ -15,20 +15,17 @@ io.on('connection', (socket) =>{
     }).catch(function(error){
         console.log('Error getting the posts');
     });
-    let dataToget;
-    let encryptKey = Buffer.from("389c9cb2-7e84-4cb4-a0ec-b2fbaa:Apr231991").toString('base64')
+    
+    let encryptKey = Buffer.from(global.gConfig.sports_feed_key).toString('base64');
     request({
         method: 'GET',
-        uri: "https://api.mysportsfeeds.com/v1.0/pull/nfl/2017-regular/cumulative_player_stats.json",
+        uri: global.gConfig.sports_feed_url,
         json: true,
         headers: {
           "Authorization": "Basic " + encryptKey
         },
         data: {  team:"miami-dolphins"  }
     },function (error, response, body) {
-        // body is the decompressed response body
-        console.log('server encoded the data as: ' + (response.headers['content-encoding'] || 'identity'))
-        console.log('the decoded data is: ' + body);
         let players = body.cumulativeplayerstats.playerstatsentry;
         console.log('players ', players);
         socket.emit('addSportsFeed', players);
@@ -40,7 +37,7 @@ io.on('connection', (socket) =>{
         let message = data.message;
         console.log('recieved data'+data);
         if(name == '' || message == ''){
-            //sendStatus('Please enter a name and message');
+            console.log('Please enter a name and message');
         } else{
             let chatUser = new ChatUser({name: name, message: message, chatName: defaultChatName});
             console.log('chat user'+chatUser.name, chatUser.message);
