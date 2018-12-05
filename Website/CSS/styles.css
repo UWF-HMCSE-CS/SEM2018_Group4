@@ -165,6 +165,10 @@
     width: 100%;
     padding: 3px;
     margin: 2px 6px 16px 0;
+	border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .button {
