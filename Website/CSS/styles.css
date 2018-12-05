@@ -11,6 +11,16 @@
 	color:white;
 }
 
+.content {
+	padding-top: 100px;
+}
+
+.full-header {
+	z-index: 9999999;
+	position: fixed;
+	width:100%;
+}
+
 .header {
   overflow: hidden;
   background-color: #2B2C2D;
@@ -78,7 +88,7 @@
     right: 0%;
     padding: 1%;
     font-size: 11px;
-    z-index: 9999998;
+    z-index: 9999999;
     color: black;
     width: 200px;
     height: -webkit-fill-available;
@@ -92,7 +102,7 @@
     margin: 15% 0 0;
     margin: auto;
 	padding: 2%;
-    background: #f1f1f1;
+    background: #e1e1e1;
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
 	border-top-right-radius: 5px;
     border-top-left-radius: 5px;
