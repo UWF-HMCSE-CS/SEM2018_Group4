@@ -26,7 +26,7 @@
             }, 4000);
         }
     };
-    var socket = io();
+    var socket = io({ query: `foo=${userName.text()}` });
     function appendToChat(belongsTo, data) {
         chatBody.append(`<li class="clearfix message ${belongsTo}">
             <div class="chatUserName">${data.name}</div>
@@ -84,8 +84,8 @@
     if(socket !== undefined){
         console.log('Connected to socket...');
     
-            socket.emit('clientConnected', {username: userName.text()});
-            dataSent = true;
+            // socket.emit('clientConnected', {username: userName.text()});
+            // dataSent = true;
                   
         
 

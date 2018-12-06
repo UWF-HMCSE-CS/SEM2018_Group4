@@ -10,18 +10,31 @@ var socketApi = {};
 socketApi.io = io;
 
 var users = [];
+var username;
+
+io.use(function(socket, next) {
+    var handshakeData = socket.request;
+    username= handshakeData._query['foo'];
+    next();
+  });
+
 io.on('connection', (socket) =>{
     //getPreviousChatHistory(socket);
     
     let encryptKey = Buffer.from(global.gConfig.sports_feed_key).toString('base64');
-    socket.on('clientConnected', (username)=>{
-        if(!users.includes(username.username)){
-            users.push(username.username);
-            getSportsChatFeed(encryptKey, socket);
-            getPreviousChatHistory(socket);            
-        }
+    if(!users.includes(username)){
+        users.push(username);
+        getSportsChatFeed(encryptKey, socket);
+        getPreviousChatHistory(socket);            
+    }
+    // socket.on('clientConnected', (username)=>{
+    //     if(!users.includes(username.username)){
+    //         users.push(username.username);
+    //         getSportsChatFeed(encryptKey, socket);
+    //         getPreviousChatHistory(socket);            
+    //     }
 
-    });
+    // });
        
     socket.on('input', (data) =>{
         let name = data.username;
