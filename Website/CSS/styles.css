@@ -316,6 +316,10 @@ tr:hover {
 	background-color:#222324;
 }
 
+#exception:hover {
+	background-color:#e1e1e1!important;
+}
+
 @media screen and (min-width: 1024px)
 {
 .header a.active:before {
