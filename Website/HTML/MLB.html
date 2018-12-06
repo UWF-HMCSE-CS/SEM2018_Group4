@@ -1,10 +1,9 @@
 <html>
 <head>
 <title>Sports Cave | MLB</title>
-<link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
+<link rel="icon" type="image/png" href="../Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/APICalls.js"></script>
 <script src="../JS/Chat.js"></script>
 </head>
 <body class="body">
@@ -26,7 +25,7 @@
 </div>
 <div class="sub-header">
 	<a href="#MLB"><img src="../Graphics/MLB.png"> </a> 
-    <a href="#MLB"> MLB</a>
+    <a href="#MLB" id="API">MLB</a>
 	<a>|</a>
     <a href="#MLB">Home</a>
     <a href="#MLBScores">Scores</a>
@@ -44,10 +43,52 @@
 <div id="result" style="color:red"></div>
 </div>
 
-<table id="APICall" style="width:50%" align="center"></table>
+<div id="login" style="width:60%">
+<h2 align="center" id="ChangeName">MLB Players' Stats</h2>
+<form>
+<select id="TeamChoice" onselect="APICall()">
+<option value="">More MLB Teams</option>
+<option value="ari">Arizona Diamondbacks</option>
+<option value="atl">Atlanta Braves</option>
+<option value="bal">Baltimore Orioles</option>
+<option value="bos">Boston Red Sox</option>
+<option value="chc">Chicago Cubs</option>
+<option value="chw">Chicago White Sox</option>
+<option value="cin">Cincinnati Reds</option>
+<option value="cle">Cleveland Indians</option>
+<option value="col">Colorado Rockies</option>
+<option value="det">Detroit Tigers</option>
+<option value="hou">Houston Astros</option>
+<option value="kc">Kansas City Royals</option>
+<option value="laa">Los Angeles Angels</option>
+<option value="lad">Los Angeles Dodgers</option>
+<option value="mia">Miami Marlins</option>
+<option value="mil">Milwaukee Brewers</option>
+<option value="min">Minnesota Twins</option>
+<option value="nym">New York Mets</option>
+<option value="nyy">New York Yankees</option>
+<option value="oak">Oakland Athletics</option>
+<option value="phi">Philadelphia Phillies</option>
+<option value="pit">Pittsburgh Pirates</option>
+<option value="sd">San Diego Padres</option>
+<option value="sf">San Francisco Giants</option>
+<option value="sea">Seattle Mariners</option>
+<option value="stl">St. Louis Cardinals</option>
+<option value="tb">Tampa Bay Rays</option>
+<option value="tex">Texas Rangers</option>
+<option value="tor">Toronto Blue Jays</option>
+<option value="wsh">Washington Nationals</option>
+</select>
+<button type="button" onclick="APICall()">Filter</button>
+</form>
+<div id="login" style="width:96%; background:#2B2C2D; padding:0; margin:0;">
+<table id="APICall" style="width:100%;" align="center"></table>
+</div>
+</div>
 
 <!--<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>-->
 <!--<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>-->
 </div>
 </body>
+<script src="../JS/APICalls.js"></script>
 </html>

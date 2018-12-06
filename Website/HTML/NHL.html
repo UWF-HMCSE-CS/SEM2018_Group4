@@ -1,10 +1,9 @@
 <html>
 <head>
 <title>Sports Cave | NHL</title>
-<link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
+<link rel="icon" type="image/png" href="../Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/APICalls.js"></script>
 <script src="../JS/Chat.js"></script>
 </head>
 <body class="body">
@@ -26,7 +25,7 @@
 </div>
 <div class="sub-header">
 	<a href="#NHL"><img src="../Graphics/NHL.png"> </a> 
-    <a href="#NHL"> NHL</a>
+    <a href="#NHL" id="API">NHL</a>
 	<a>|</a>
     <a href="#NHL">Home</a>
     <a href="#NHLScores">Scores</a>
@@ -44,10 +43,53 @@
 <div id="result" style="color:red"></div>
 </div>
 
-<table id="APICall" style="width:50%" align="center"></table>
+<div id="login" style="width:60%">
+<h2 align="center" id="ChangeName">NHL Players' Stats</h2>
+<form>
+<select id="TeamChoice" onselect="APICall()">
+<option value="">NHL Teams</option>
+<option value="ana">Anaheim Ducks</option>
+<option value="ari">Arizona Coyotes</option>
+<option value="bos">Boston Bruins</option>
+<option value="buf">Buffalo Sabres</option>
+<option value="cgy">Calgary Flames</option>
+<option value="car">Carolina Hurricanes</option>
+<option value="chi">Chicago Blackhawks</option>
+<option value="col">Colorado Avalanche</option>
+<option value="cbj">Columbus Blue Jackets</option>
+<option value="dal">Dallas Stars</option>
+<option value="det">Detroit Red Wings</option>
+<option value="edm">Edmonton Oilers</option>
+<option value="fla">Florida Panthers</option>
+<option value="lak">Los Angeles Kings</option>
+<option value="min">Minnesota Wild</option>
+<option value="mtl">Montreal Canadiens</option>
+<option value="nsh">Nashville Predators</option>
+<option value="njd">New Jersey Devils</option>
+<option value="nyi">New York Islanders</option>
+<option value="nyr">New York Rangers</option>
+<option value="ott">Ottawa Senators</option>
+<option value="phi">Philadelphia Flyers</option>
+<option value="pit">Pittsburgh Penguins</option>
+<option value="sjs">San Jose Sharks</option>
+<option value="stl">St. Louis Blues</option>
+<option value="tbl">Tampa Bay Lightning</option>
+<option value="tor">Toronto Maple Leafs</option>
+<option value="van">Vancouver Canucks</option>
+<option value="vgs">Vegas Golden Knights</option>
+<option value="wsh">Washington Capitals</option>
+<option value="wpg">Winnipeg Jets</option>
+</select>
+<button type="button" onclick="APICall()">Filter</button>
+</form>
+<div id="login" style="width:96%; background:#2B2C2D; padding:0; margin:0;">
+<table id="APICall" style="width:100%;" align="center"></table>
+</div>
+</div>
 
 <!--<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>-->
 <!--<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>-->
 </div>
 </body>
+<script src="../JS/APICalls.js"></script>
 </html>

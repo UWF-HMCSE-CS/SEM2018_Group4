@@ -1,10 +1,9 @@
 <html>
 <head>
 <title>Sports Cave | NBA</title>
-<link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
+<link rel="icon" type="image/png" href="../Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/APICalls.js"></script>
 <script src="../JS/Chat.js"></script>
 </head>
 <body class="body">
@@ -26,7 +25,7 @@
 </div>
 <div class="sub-header">
 	<a href="#NBA"><img src="../Graphics/NBA.png"> </a> 
-    <a href="#NBA"> NBA</a>
+    <a href="#NBA" id="API">NBA</a>
 	<a>|</a>
     <a href="#NBA">Home</a>
     <a href="#NBAScores">Scores</a>
@@ -44,10 +43,52 @@
 <div id="result" style="color:red"></div>
 </div>
 
-<table id="APICall" style="width:50%" align="center"></table>
+<div id="login" style="width:60%">
+<h2 align="center" id="ChangeName">NBA Players' Stats</h2>
+<form>
+<select id="TeamChoice" onselect="APICall()">
+<option value="">NBA Teams</option>
+<option value="atl">Atlanta Hawks</option>
+<option value="bos">Boston Celtics</option>
+<option value="bkn">Brooklyn Nets</option>
+<option value="cha">Charlotte Hornets</option>
+<option value="chi">Chicago Bulls</option>
+<option value="cle">Cleveland Cavaliers</option>
+<option value="dal">Dallas Mavericks</option>
+<option value="den">Denver Nuggets</option>
+<option value="det">Detroit Pistons</option>
+<option value="gsw">Golden State Warriors</option>
+<option value="hou">Houston Rockets</option>
+<option value="ind">Indiana Pacers</option>
+<option value="lac">LA Clippers</option>
+<option value="lal">Los Angeles Lakers</option>
+<option value="mem">Memphis Grizzlies</option>
+<option value="mia">Miami Heat</option>
+<option value="mil">Milwaukee Bucks</option>
+<option value="min">Minnesota Timberwolves</option>
+<option value="nop">New Orleans Pelicans</option>
+<option value="nyk">New York Knicks</option>
+<option value="okc">Oklahoma City Thunder</option>
+<option value="orl">Orlando Magic</option>
+<option value="phi">Philadelphia 76ers</option>
+<option value="phx">Phoenix Suns</option>
+<option value="por">Portland Trail Blazers</option>
+<option value="sac">Sacramento Kings</option>
+<option value="sas">San Antonio Spurs</option>
+<option value="tor">Toronto Raptors</option>
+<option value="uta">Utah Jazz</option>
+<option value="was">Washington Wizards</option>
+</select>
+<button type="button" onclick="APICall()">Filter</button>
+</form>
+<div id="login" style="width:96%; background:#2B2C2D; padding:0; margin:0;">
+<table id="APICall" style="width:100%;" align="center"></table>
+</div>
+</div>
 
 <!--<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>-->
 <!--<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>-->
 </div>
 </body>
+<script src="../JS/APICalls.js"></script>
 </html>
