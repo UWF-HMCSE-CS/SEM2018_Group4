@@ -26,8 +26,9 @@
             }, 4000);
         }
     };
-    var socket = io({ query: `foo=${userName.text()}` });
+    var socket = io();
     function appendToChat(belongsTo, data) {
+        console.log('d',data)
         chatBody.append(`<li class="clearfix message ${belongsTo}">
             <div class="chatUserName">${data.name}</div>
             <div class="message">${data.message}</div></li>`

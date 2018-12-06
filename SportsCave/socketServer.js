@@ -12,21 +12,24 @@ socketApi.io = io;
 var users = [];
 var username;
 
-io.use(function(socket, next) {
-    var handshakeData = socket.request;
-    username= handshakeData._query['foo'];
-    next();
-  });
+// io.use(function(socket, next) {
+//     var handshakeData = socket.request;
+//     username= handshakeData._query['foo'];
+//     next();
+//   });
 
 io.on('connection', (socket) =>{
     //getPreviousChatHistory(socket);
     
     let encryptKey = Buffer.from(global.gConfig.sports_feed_key).toString('base64');
-    if(!users.includes(username)){
-        users.push(username);
-        getSportsChatFeed(encryptKey, socket);
-        getPreviousChatHistory(socket);            
-    }
+    getSportsChatFeed(encryptKey, socket);
+    getPreviousChatHistory(socket);
+
+    // if(!users.includes(username)){
+    //     users.push(username);
+    //     getSportsChatFeed(encryptKey, socket);
+    //     getPreviousChatHistory(socket);            
+    // }
     // socket.on('clientConnected', (username)=>{
     //     if(!users.includes(username.username)){
     //         users.push(username.username);
@@ -50,7 +53,7 @@ io.on('connection', (socket) =>{
                     throw err;
                 }
                 console.log('chat save'+chatUser.name);
-                io.emit('output', {username:chatUser.name, message: chatUser.message});
+                io.emit('output', {name:chatUser.name, message: chatUser.message});
 
             });
         }
