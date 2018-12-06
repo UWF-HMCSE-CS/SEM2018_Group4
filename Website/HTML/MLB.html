@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Sports Cave</title>
+<title>Sports Cave | MLB</title>
 <link rel="icon" type="image/png" href="Graphics/Sports-Cave.ico" />
 <link rel="stylesheet" href="../CSS/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -8,9 +8,10 @@
 <script src="../JS/Chat.js"></script>
 </head>
 <body class="body">
+<div class="full-header">
 <div class="header">
-  <img src="../Graphics/Sports-Cave-header.png" height="50px" width="120px"></a>
-  <div class="header-right">
+  <div class="header-right" style="float:left">
+	<a href="../index.html" style="padding:0px!important;"><img src="../Graphics/Sports-Cave-header.png" height="50px" width="120px" style="float:left"></a>
     <a href="NFL.html">NFL</a>
     <a href="NBA.html">NBA</a>
     <a class="active" href="MLB.html">MLB</a>
@@ -18,30 +19,35 @@
 	<a href="NHL.html">NHL</a>
 	<a href="#More">&#183;&#183;&#183;</a>
   </div>
+   <div class="header-right">
+    <a href="Login.html">Login</a>
+    <a href="Signup.html">Sign Up</a>
+  </div>
 </div>
 <div class="sub-header">
-	<a href="#NFL"><img src="../Graphics/MLB.png"> </a> 
-    <a href="#NFL"> MLB</a>
+	<a href="#MLB"><img src="../Graphics/MLB.png"> </a> 
+    <a href="#MLB"> MLB</a>
 	<a>|</a>
-    <a href="#NFL">Home</a>
-    <a href="#NFLScores">Scores</a>
-	<a href="#NFLSchedule">Schedule</a>
-	<a href="#NFLStandings">Standings</a>
-	<a href="#NFLStats">Stats</a>
-	<a href="#NFLTeams">Teams</a>
-	<a href="#NFLMore">More</a>
+    <a href="#MLB">Home</a>
+    <a href="#MLBScores">Scores</a>
+	<a href="#MLBSchedule">Schedule</a>
+	<a href="#MLBStandings">Standings</a>
+	<a href="#MLBStats">Stats</a>
+	<a href="#MLBTeams">Teams</a>
+	<a href="#MLBMore">More</a>
 </div>
 <div class="sub-header"></div>
+</div>
+<div class="content">
 <br>
-<center><img src="../Graphics/Sports-Cave.png"></center>
-<p align="center"><b>Under Construction - SEM Group 4</b></p>
 <div class="container">
 <div id="result" style="color:red"></div>
 </div>
 
 <table id="APICall" style="width:50%" align="center"></table>
 
-<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>
-<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>
+<!--<div class="side-chat" onclick="ChangeClassSideChat(this)"><strong>Chat (65)</strong></div>-->
+<!--<div class="side-button" onclick="ChangeClassSideButton(this)"><strong>Jets vs Bills</strong></div>-->
+</div>
 </body>
 </html>
